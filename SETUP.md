@@ -49,7 +49,24 @@ Con:
 const API_KEY = 'la-tua-api-key-openweather';
 ```
 
-## 3. Avviare l'applicazione
+## 3. Configurazione Pubblicità (Opzionale)
+
+Per monetizzare la tua app, puoi configurare:
+
+### Google AdSense:
+1. Registrati su [Google AdSense](https://www.google.com/adsense/)
+2. Ottieni l'approvazione per il tuo sito
+3. Sostituisci in `src/config/adsConfig.ts`:
+   - `ca-pub-XXXXXXXXXXXXXXXXX` con il tuo Publisher ID
+   - I vari `YOUR_SLOT_ID` con i tuoi Slot ID reali
+
+### Pubblicità Personalizzata:
+- Modifica `src/config/adsConfig.ts` per aggiungere i tuoi annunci sponsorizzati
+- Personalizza titoli, descrizioni e link
+
+Consulta `ADVERTISING.md` per la guida completa.
+
+## 4. Avvio dell'applicazione
 
 Dopo aver configurato entrambe le API:
 
@@ -59,7 +76,7 @@ npm start
 
 L'app sarà disponibile su http://localhost:3000
 
-## 4. Funzionalità dell'app
+## 5. Funzionalità dell'app
 
 - **Header con login Google**: In alto a destra
 - **Ricerca meteo**: Campo di ricerca per qualsiasi città
@@ -67,14 +84,14 @@ L'app sarà disponibile su http://localhost:3000
 - **Informazioni dettagliate**: Temperatura, umidità, vento, pressione, visibilità
 - **Design responsive**: Funziona su desktop e mobile
 
-## 5. Note aggiuntive
+## 6. Note aggiuntive
 
 - L'app è già configurata per il Salento (Lecce come città predefinita)
 - L'interfaccia è in italiano
 - Il design è moderno e user-friendly
 - L'autenticazione Google è opzionale per l'utente
 
-## 6. Possibili miglioramenti futuri
+## 7. Possibili miglioramenti futuri
 
 - Previsioni a 5 giorni
 - Geolocalizzazione automatica

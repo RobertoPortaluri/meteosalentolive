@@ -3,6 +3,7 @@ import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from './firebase';
 import Header from './components/Header';
 import WeatherSearch from './components/WeatherSearch';
+import RevenueDashboard from './components/RevenueDashboard';
 import './App.css';
 
 const App: React.FC = () => {
@@ -33,6 +34,8 @@ const App: React.FC = () => {
       <main className="main-content">
         <WeatherSearch />
       </main>
+      {/* Dashboard Ricavi - visibile solo per admin/developer */}
+      <RevenueDashboard />
     </div>
   );
 };
