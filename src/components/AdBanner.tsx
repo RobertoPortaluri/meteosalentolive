@@ -38,7 +38,7 @@ const AdBanner: React.FC<AdBannerProps> = ({
     <div className={`ad-banner ${adType} ${className}`}>
       <div className="ad-label">Pubblicità</div>
       <AdSense.Google
-        client="ca-pub-XXXXXXXXXXXXXXXXX" // Sostituisci con il tuo publisher ID
+        client="ca-pub-6254733480668093" // Il tuo publisher ID reale
         slot={config.slot}
         style={{
           width: adStyle === 'responsive' ? '100%' : config.width,

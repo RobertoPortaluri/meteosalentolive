@@ -9,12 +9,14 @@ export interface AdConfig {
 }
 
 // Configurazione Google AdSense
+// NOTA: Dopo aver creato le unità pubblicitarie su AdSense, 
+// sostituisci questi placeholder con i tuoi slot ID reali:
 export const ADSENSE_CONFIG = {
-  publisherId: 'ca-pub-XXXXXXXXXXXXXXXXX', // Sostituisci con il tuo publisher ID
+  publisherId: 'ca-pub-6254733480668093',
   slots: {
-    banner: 'YOUR_BANNER_SLOT_ID',
-    square: 'YOUR_SQUARE_SLOT_ID',
-    vertical: 'YOUR_VERTICAL_SLOT_ID'
+    banner: 'YOUR_BANNER_SLOT_ID',        // Es: '1234567890'
+    square: 'YOUR_SQUARE_SLOT_ID',        // Es: '0987654321' 
+    vertical: 'YOUR_VERTICAL_SLOT_ID'     // Es: '1122334455'
   }
 };
 
