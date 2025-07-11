@@ -140,9 +140,11 @@ const WeatherSearch: React.FC = () => {
         </>
       )}
 
-      <div className="general-info">
-        <h3>Informazioni Generali</h3>
-        <p>Benvenuto in MeteoSalento Live! Qui puoi trovare le previsioni meteo aggiornate per il Salento e non solo.</p>
+      <div className="welcome-message">
+        <span className="welcome-emoji">🌤️</span>
+        <h3>Benvenuto in MeteoSalento Live!</h3>
+        <p>Scopri le previsioni meteo aggiornate in tempo reale per il Salento e tutte le località italiane.</p>
+        <p>Digita il nome di una città per iniziare! ✨</p>
         
         {/* Pubblicità tra le informazioni generali */}
         <SimpleAd

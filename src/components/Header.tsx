@@ -30,23 +30,30 @@ const Header: React.FC<HeaderProps> = ({ user, setUser }) => {
   return (
     <header className="header">
       <div className="header-content">
-        <h1 className="logo">MeteoSalento Live</h1>
+        <h1 className="logo">
+          <span className="logo-icon">🌤️</span>
+          MeteoSalento Live
+        </h1>
         <div className="auth-section">
           {user ? (
-            <div className="user-info">
-              <img 
-                src={user.photoURL || ''} 
-                alt="Avatar" 
-                className="user-avatar"
-              />
-              <span className="user-name">{user.displayName}</span>
-              <button onClick={handleSignOut} className="auth-button logout">
+            <>
+              <div className="user-info">
+                <img 
+                  src={user.photoURL || ''} 
+                  alt="Avatar" 
+                  className="profile-image"
+                />
+                <span className="welcome-text">
+                  Ciao, {user.displayName?.split(' ')[0] || 'Utente'}!
+                </span>
+              </div>
+              <button onClick={handleSignOut} className="auth-button logout-button">
                 Logout
               </button>
-            </div>
+            </>
           ) : (
-            <button onClick={signInWithGoogle} className="auth-button login">
-              Accedi con Google
+            <button onClick={signInWithGoogle} className="auth-button login-button">
+              🚀 Accedi con Google
             </button>
           )}
         </div>

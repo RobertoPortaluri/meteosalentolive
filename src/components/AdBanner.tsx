@@ -1,6 +1,14 @@
-import React from 'react';
-import AdSense from 'react-adsense';
+import React, { useState } from 'react';
+import useAdSense from '../hooks/useAdSense';
+import { ADSENSE_CONTROL } from '../config/adsConfig';
 import './AdBanner.css';
+
+// Dichiarazione del tipo per AdSense
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
+}
 
 interface AdBannerProps {
   adType?: 'banner' | 'square' | 'vertical';
@@ -13,40 +21,71 @@ const AdBanner: React.FC<AdBannerProps> = ({
   adStyle = 'responsive',
   className = ''
 }) => {
+  const [showFallback, setShowFallback] = useState(false);
+
   // Configurazioni per diversi tipi di annunci
   const adConfigs = {
     banner: {
       width: '728',
       height: '90',
-      slot: 'YOUR_BANNER_SLOT_ID'
+      slot: '1234567890'
     },
     square: {
       width: '300',
       height: '250',
-      slot: 'YOUR_SQUARE_SLOT_ID'
+      slot: '2345678901'
     },
     vertical: {
       width: '160',
       height: '600',
-      slot: 'YOUR_VERTICAL_SLOT_ID'
+      slot: '3456789012'
     }
   };
 
   const config = adConfigs[adType];
+  
+  const adRef = useAdSense({
+    client: 'ca-pub-6254733480668093',
+    slot: config.slot,
+    format: adStyle === 'responsive' ? 'auto' : undefined,
+    responsive: adStyle === 'responsive'
+  });
+
+  // Mostra sempre il fallback se AdSense è disabilitato
+  if (!ADSENSE_CONTROL.enableAdSense || showFallback || typeof window === 'undefined') {
+    return (
+      <div className={`ad-banner ${adType} ${className} ad-placeholder`}>
+        <div className="ad-label">Pubblicità</div>
+        <div className="ad-placeholder-content">
+          <div className="ad-placeholder-icon">
+            {adType === 'banner' ? '📰' : adType === 'square' ? '🎯' : '📱'}
+          </div>
+          <div className="ad-placeholder-text">
+            <h4>📢 Spazio Pubblicitario</h4>
+            <p>Annuncio {adType === 'banner' ? 'Banner' : adType === 'square' ? 'Quadrato' : 'Verticale'}</p>
+            <small>{config.width}x{config.height}</small>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`ad-banner ${adType} ${className}`}>
       <div className="ad-label">Pubblicità</div>
-      <AdSense.Google
-        client="ca-pub-6254733480668093" // Il tuo publisher ID reale
-        slot={config.slot}
+      <ins 
+        ref={adRef as any}
+        className="adsbygoogle"
         style={{
-          width: adStyle === 'responsive' ? '100%' : config.width,
-          height: config.height,
-          display: 'block'
+          display: 'block',
+          width: adStyle === 'responsive' ? '100%' : `${config.width}px`,
+          height: `${config.height}px`
         }}
-        responsive={adStyle === 'responsive'}
-        format={adStyle === 'responsive' ? 'auto' : undefined}
+        data-ad-client="ca-pub-6254733480668093"
+        data-ad-slot={config.slot}
+        data-ad-format={adStyle === 'responsive' ? 'auto' : undefined}
+        data-full-width-responsive={adStyle === 'responsive' ? 'true' : undefined}
+        onError={() => setShowFallback(true)}
       />
     </div>
   );

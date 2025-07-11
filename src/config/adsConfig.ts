@@ -1,5 +1,25 @@
 // Configurazione pubblicità per MeteoSalento
 
+// Controllo globale AdSense
+export const ADSENSE_CONTROL = {
+  // Imposta su false per mostrare solo placeholder durante lo sviluppo
+  enableAdSense: process.env.NODE_ENV === 'production' && false, // Disabilitato per ora
+  
+  // Configurazioni di sviluppo
+  development: {
+    showPlaceholders: true,
+    logErrors: true,
+    delayLoad: 1000 // Ritardo in ms per caricare gli annunci
+  },
+  
+  // Configurazioni di produzione
+  production: {
+    showPlaceholders: false,
+    logErrors: false,
+    delayLoad: 100
+  }
+};
+
 export interface AdConfig {
   title: string;
   description: string;

@@ -366,23 +366,54 @@
 }
 
 @media (max-width: 768px) {
+  .revenue-toggle-btn {
+    top: 15px;
+    right: 15px;
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+
+  .revenue-dashboard-overlay {
+    padding: 10px;
+  }
+
   .revenue-dashboard {
-    padding: 20px;
-    margin: 10px;
+    padding: 20px 15px;
+    margin: 5px;
+    max-height: 95vh;
   }
 
   .dashboard-header {
     flex-direction: column;
     gap: 15px;
     align-items: stretch;
+    margin-bottom: 20px;
+  }
+
+  .dashboard-header h2 {
+    font-size: 1.5rem;
+    text-align: center;
   }
 
   .header-controls {
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .period-selector {
+    flex: 1;
+    min-width: 120px;
   }
 
   .metrics-grid {
     grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .metric-card {
+    padding: 20px 15px;
   }
 
   .chart-container {
@@ -392,9 +423,116 @@
 
   .export-buttons {
     flex-direction: column;
+    gap: 10px;
   }
 
   .links-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .revenue-toggle-btn {
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .revenue-dashboard-overlay {
+    padding: 5px;
+  }
+
+  .revenue-dashboard {
+    padding: 15px 10px;
+    border-radius: 10px;
+    max-height: 98vh;
+  }
+
+  .dashboard-header {
+    margin-bottom: 15px;
+  }
+
+  .dashboard-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .header-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .period-selector {
+    width: 100%;
+  }
+
+  .close-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .metrics-grid {
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+
+  .metric-card {
+    padding: 15px 12px;
+  }
+
+  .metric-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .metric-value {
+    font-size: 1.6rem;
+  }
+
+  .chart-container {
+    height: 250px;
+  }
+
+  .export-buttons {
+    gap: 8px;
+  }
+
+  .export-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .revenue-toggle-btn {
+    top: 8px;
+    right: 8px;
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+
+  .revenue-dashboard {
+    padding: 12px 8px;
+  }
+
+  .dashboard-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .metric-card {
+    padding: 12px 10px;
+  }
+
+  .metric-card h3 {
+    font-size: 0.85rem;
+  }
+
+  .metric-value {
+    font-size: 1.4rem;
+  }
+
+  .chart-container {
+    height: 200px;
   }
 }
