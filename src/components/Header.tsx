@@ -1,14 +1,16 @@
 import React from 'react';
 import { signInWithPopup, signOut, User } from 'firebase/auth';
 import { auth, googleProvider } from '../firebase';
+import { UserRole } from '../services/userService';
 import './Header.css';
 
 interface HeaderProps {
   user: User | null;
   setUser: (user: User | null) => void;
+  userRole?: UserRole | null;
 }
 
-const Header: React.FC<HeaderProps> = ({ user, setUser }) => {
+const Header: React.FC<HeaderProps> = ({ user, setUser, userRole }) => {
   const signInWithGoogle = async (): Promise<void> => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
@@ -36,18 +38,23 @@ const Header: React.FC<HeaderProps> = ({ user, setUser }) => {
         </h1>
         <div className="auth-section">
           {user ? (
-            <>
-              <div className="user-info">
-                <img 
-                  src={user.photoURL || ''} 
-                  alt="Avatar" 
-                  className="profile-image"
-                />
-                <span className="welcome-text">
-                  Ciao, {user.displayName?.split(' ')[0] || 'Utente'}!
-                </span>
+            <div className="user-info">
+              <img 
+                src={user.photoURL || ''} 
+                alt="Avatar" 
+                className="user-avatar"
+              />
+              <div className="user-details">
+                <span className="user-name">{user.displayName}</span>
+                {userRole && (
+                  <span className={`role-badge ${userRole.role.toLowerCase()}`}>
+                    {userRole.role.toLowerCase() === 'admin' ? '👑 Admin' : 
+                     userRole.role.toLowerCase() === 'meteorologo' ? '🌤️ Meteorologo' : 
+                     '👤 Utente'}
+                  </span>
+                )}
               </div>
-              <button onClick={handleSignOut} className="auth-button logout-button">
+              <button onClick={handleSignOut} className="auth-button logout">
                 Logout
               </button>
             </>
